@@ -6,8 +6,9 @@
 #include <iostream>
 #include <thread>
 
+using namespace std;
 
-Terrain::Terrain(unsigned int h, unsigned int l): postion(h, std::vector<char>(l,' ')){
+Terrain::Terrain(unsigned int h, unsigned int l, unsigned nbreObjets): postion(h, std::vector<char>(l,' ')){
    hauteur = h;
    largeur = l;
 

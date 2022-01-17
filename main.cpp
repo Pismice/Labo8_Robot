@@ -17,20 +17,33 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 #include <ctime>
 #include "Robot.h"
 #include "Terrain.h"
+#include "saisie.h"     // Librairie du 10.11.2021
+
 using namespace std;
 
 int main() {
+   // Bornes des valeurs utilisateur
+   unsigned const LARGEUR_MIN = 10;
+   unsigned const LARGEUR_MAX = 10;
+   unsigned const HAUTEUR_MIN = 10;
+   unsigned const HAUTEUR_MAX = 10;
+   unsigned const NBRE_OJBETS_MIN = 2;
+   unsigned const NBRE_OJBETS_MAX = 9;
 
-   Terrain t(10, 20);
+   // Récupération des valeurs utilisateur
+   unsigned const LARGEUR = saisieDansIntervalle(LARGEUR_MIN, LARGEUR_MAX, "largeur"s);
+   unsigned const HAUTEUR = saisieDansIntervalle(HAUTEUR_MIN, HAUTEUR_MAX, "hauteur"s);
+   unsigned const NBRE_OBJETS = saisieDansIntervalle(2, 9, "nbre objets"s);
+
+   // Création du terrain
+   Terrain t(HAUTEUR, LARGEUR, NBRE_OBJETS);
 
    srand((unsigned )time(nullptr));
 
    Robot R1;
    t.setPosRobot(R1);
-   //this_thread :: sleep_for (100ms);
    Robot R2;
    t.setPosRobot(R2);
-   //this_thread :: sleep_for (100ms);
    Robot R3;
    t.setPosRobot(R3);
 

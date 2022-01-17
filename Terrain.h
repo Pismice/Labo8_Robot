@@ -18,7 +18,7 @@ private:
    unsigned largeur;
    std::vector<std::vector<char>> postion;
 public:
-   Terrain(unsigned h, unsigned l);
+   Terrain(unsigned h, unsigned l, unsigned nbreObjets);
    //Terrain();
 
    unsigned getHauteur() const;

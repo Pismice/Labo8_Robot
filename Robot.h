@@ -13,7 +13,7 @@ class Robot{
 
    //friend void deplacerRobot();
 private:
-   unsigned id = 0;
+   const unsigned id;
    unsigned x;
    unsigned y;
    static unsigned compteur;
