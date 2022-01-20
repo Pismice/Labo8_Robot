@@ -20,6 +20,11 @@ Terrain::Terrain(unsigned int h, unsigned int l){
    pointMax.setY(h);
 }
 
+
+unsigned Terrain::getLargeur() const {
+   return largeur;
+}
+
 void Terrain::creerRobot(unsigned nbrObjet) {
 
    for(unsigned j = 0; j < nbrObjet; ++j){ //boucle sur nbr d'objet a créer
@@ -31,12 +36,12 @@ void Terrain::creerRobot(unsigned nbrObjet) {
        while(!siCaseVierge){
 
            // Génération aléatoire des coordonnées
-           x = rand() % ((int)getLargeur() - 2) + 1;
-           y = rand() % ((int)getHauteur() - 2) + 1;
+           x = rand() % ((int)pointMax.getY() - 2) + 1;
+           y = rand() % ((int)pointMax.getX() - 2) + 1;
 
           // controle si la case existe déja
-           for(size_t i = 0; i < robots.size(); ++i){
-               if(robots.at(i).getPosition().getX() == x and robots.at(i).getPosition().getY() == y){
+           for(size_t i = 0; i < robot.size(); ++i){
+               if(robot.at(i).pointMax.getX() == x and robot.at(i).pointMax.getY() == y){
                    siCaseVierge = false;
                    break;
                }
