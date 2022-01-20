@@ -23,7 +23,7 @@ unsigned Robot::getCompteur() {
 }
 
 void Robot::deplacer() {
-   short d = short(rand() % nbreDirections-1);
+   auto d = short(rand() % nbreDirections-1);
 
    switch (d) {
       case int(Robot::Direction::HAUT) :

@@ -7,11 +7,14 @@
 #include "Coordonnee.h"
 
 class Robot{
-    friend bool operator==(const Robot& lh, const Robot& rh){
-        return (lh.position.getX() == rh.position.getX() and lh.position.getY() == rh.position.getY());
+   // TODO : INLINE ??
+   // TODO : soit getter soit propriétés, pas mic mac
+    friend bool operator==(const Robot& lh, const Robot& rh)
+    {
+        return (lh.position.getX() == rh.position.getX() and lh.position.getY() == rh.position.getY() and lh.id != rh.id);
     }
 
-   //friend void deplacerRobot();
+
 private:
    const unsigned id;
    Coordonnee position;
