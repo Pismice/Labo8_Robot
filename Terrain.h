@@ -13,6 +13,8 @@
 
 class Terrain{
 
+    friend std::ostream& operator<<(std::ostream& lhs, const Terrain& rhs);
+
 private:
    // Propriétés
    Coordonnee pointMax;
@@ -22,10 +24,10 @@ private:
    const char mur = '|';
    const char vide = ' ';
 
+   std::vector<Robot> robot;
 
    // Méthodes
    void jouerTour();
-
 
 public:
 
@@ -41,9 +43,11 @@ public:
 
    unsigned getLargeur() const;
 
-   friend std::ostream& operator<<(std::ostream& lhs, const Terrain& rhs);
+    unsigned getRobot() const;
 
-   //void setPosRobot(Robot& r);
+    void creerRobot(unsigned nbrObjet);
+
+    void idRobot();
 
    /**
    * Permet de démarer le jeu et simuler les déplacements et combats des robots

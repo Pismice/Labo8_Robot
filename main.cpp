@@ -35,13 +35,18 @@ int main() {
 
    // Création du terrain
    Terrain t(HAUTEUR, LARGEUR);
+   t.creerRobot(NBRE_OBJETS);
+
+   cout << t.getRobot() << endl;
+
+   t.idRobot();
 
    // Placer les robots
    // DIDIER
 
    // Jouer les tours
    // JEREMIE
-   t.demarrerJeu();
+   //t.demarrerJeu();
 
  return EXIT_SUCCESS;
 }
