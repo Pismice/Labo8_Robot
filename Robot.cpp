@@ -24,10 +24,6 @@ unsigned Robot::getId() const {
    return id;
 }
 
-Coordonnee Robot::getPosition()
-{
-   return this->position;
-}
 
 unsigned Robot::getCompteur() {
    return compteur;

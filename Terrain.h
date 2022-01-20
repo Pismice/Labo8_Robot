@@ -19,12 +19,6 @@ private:
    // Propriétés
    Coordonnee pointMax;
    std::vector<Robot> robots;
-   const char plafond = '^';
-   const char sol = '_';
-   const char mur = '|';
-   const char vide = ' ';
-
-   std::vector<Robot> robot;
 
    // Méthodes
    void jouerTour();

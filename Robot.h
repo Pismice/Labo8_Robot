@@ -8,7 +8,7 @@
 
 class Robot{
     friend bool operator==(const Robot& lh, const Robot& rh){
-        return (lh.x == rh.x and lh.y == rh.y);
+        return (lh.position.getX() == rh.position.getX() and lh.position.getY() == rh.position.getY());
     }
 
    //friend void deplacerRobot();
@@ -23,15 +23,18 @@ private:
 public:
    Robot();
 
-   //Robot(const Robot& rb);
-
-   //Robot& operator=(const Robot& r);
-
-  // ~Robot();
+   Coordonnee getPosition() const
+   {
+      return this->position;
+   }
+   void setPosition(unsigned x, unsigned y)
+   {
+      this->position.setX(x);
+      this->position.setY(y);
+   }
 
    unsigned getId() const;
    static unsigned getCompteur();
-   Coordonnee getPosition();
    void deplacer();
 };
 

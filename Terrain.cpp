@@ -6,41 +6,18 @@
 #include <iostream>
 #include <thread>
 #include <algorithm>
+
 using namespace std;
 
-/*class estOccuper{
-private:
-    Robot rb;
-public:
-    estOccuper(const Robot& init): rb(init){
-        //rb.setX(init.getX());
-        //rb.setY(init.getY());
-    }
-    bool operator() (const Robot& param){
-        return !(rb == param);
-    }
-};*/
-
+// TODO : bonne place ?
+const char plafond = '^';
+const char sol = '_';
+const char mur = '|';
+const char vide = ' ';
 
 Terrain::Terrain(unsigned int h, unsigned int l){
    pointMax.setX(l);
    pointMax.setY(h);
-
-//   for(unsigned ligne = 0; ligne < hauteur; ++ligne){
-//      for(unsigned colonne = 0; colonne < largeur; ++colonne){
-//         if(ligne == 0 or ligne == hauteur - 1 ){
-//            postion[ligne][colonne] = '-';
-//         }
-//         if(colonne == 0 or colonne == largeur - 1){
-//            postion[ligne][colonne] = '|';
-//         }
-//      }
-//   }
-}
-
-
-unsigned Terrain::getLargeur() const {
-   return largeur;
 }
 
 void Terrain::creerRobot(unsigned nbrObjet) {
@@ -48,27 +25,26 @@ void Terrain::creerRobot(unsigned nbrObjet) {
    for(unsigned j = 0; j < nbrObjet; ++j){ //boucle sur nbr d'objet a créer
        bool siCaseVierge = false;
        unsigned x, y;
-       robot.reserve(nbrObjet);
-       robot.size();
+       robots.reserve(nbrObjet);
+       robots.size();
 
        while(!siCaseVierge){
 
            // Génération aléatoire des coordonnées
-           x = rand() % ((int)hauteur - 2) + 1;
-           y = rand() % ((int)largeur - 2) + 1;
+           x = rand() % ((int)getLargeur() - 2) + 1;
+           y = rand() % ((int)getHauteur() - 2) + 1;
 
           // controle si la case existe déja
-           for(size_t i = 0; i < robot.size(); ++i){
-               if(robot.at(i).getX() == x and robot.at(i).getY() == y){
+           for(size_t i = 0; i < robots.size(); ++i){
+               if(robots.at(i).getPosition().getX() == x and robots.at(i).getPosition().getY() == y){
                    siCaseVierge = false;
                    break;
                }
                siCaseVierge = true;
            }
            Robot r;
-           r.setX(x);
-           r.setY(y);
-           robot.emplace_back(r);
+           r.setPosition(x,y);
+           robots.emplace_back(r);
            siCaseVierge = true;
        }
    }
@@ -104,28 +80,28 @@ ostream &operator<<(ostream &lhs, const Terrain &rhs) {
    // Affichage du plafond
    for(unsigned x = 0 ; x < rhs.getLargeur() + 2 ; ++x)
    {
-      lhs << rhs.plafond;
+      lhs << plafond;
    }
    lhs << endl;
 
    // Affichage des lignes du terrain
    for(unsigned y = 0 ; y < rhs.getHauteur() ; ++y)
    {
-      lhs << rhs.mur;
+      lhs << mur;
       // TODO : tester si la ligne contient des robots
       for(unsigned x = 0 ; x < rhs.getLargeur() ; ++x)
       {
 
-         lhs << rhs.vide;
+         lhs << vide;
       }
-      lhs << rhs.mur;
+      lhs << mur;
       lhs << endl;
    }
 
    // Affichage du sol
    for(unsigned x = 0 ; x < rhs.getLargeur() + 2 ; ++x)
    {
-      lhs << rhs.sol;
+      lhs << sol;
    }
    lhs << endl;
 
