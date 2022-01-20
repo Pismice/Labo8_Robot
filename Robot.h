@@ -5,10 +5,6 @@
 #ifndef LABO8_ROBOT_ROBOT_H
 #define LABO8_ROBOT_ROBOT_H
 
-#include "Terrain.h"
-
-class Terrain;
-
 class Robot{
 
    //friend void deplacerRobot();

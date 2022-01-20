@@ -7,6 +7,7 @@
 
 #include "Robot.h"
 #include <vector>
+#include <ostream>
 
 class Terrain{
 
@@ -14,6 +15,8 @@ private:
    // Propriétés
    unsigned hauteur;
    unsigned largeur;
+
+   std::vector<std::vector<Robot>> robots;
 
    // Méthodes
    void jouerTour();
@@ -32,6 +35,8 @@ public:
    unsigned getHauteur() const;
 
    unsigned getLargeur() const;
+
+   friend std::ostream& operator<<(std::ostream& lhs, const Terrain& rhs);
 
    //void setPosRobot(Robot& r);
 

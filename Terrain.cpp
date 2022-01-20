@@ -43,6 +43,7 @@ unsigned Terrain::getLargeur() const {
 
 void Terrain::demarrerJeu() {
    // Afficher terrain
+   cout << (*this);
 
    // boucle while sur jouerTour() tant que > 1 robot en vie
 }
@@ -51,4 +52,9 @@ void Terrain::jouerTour() {
    // Bouger tous les robots
 
    // Afficher le terrrain (avec surchage <<)
+}
+
+ostream &operator<<(ostream &lhs, const Terrain &rhs) {
+   cout << "ceci est mon terrain :)" << endl;
+   return lhs;
 }

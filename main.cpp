@@ -14,8 +14,6 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 
 #include <cstdlib>
 #include <iostream>
-#include <ctime>
-#include "Robot.h"
 #include "Terrain.h"
 #include "saisie.h"     // Librairie du 10.11.2021
 
@@ -24,9 +22,9 @@ using namespace std;
 int main() {
    // Bornes des valeurs utilisateur
    unsigned const LARGEUR_MIN = 10;
-   unsigned const LARGEUR_MAX = 10;
+   unsigned const LARGEUR_MAX = 1000;
    unsigned const HAUTEUR_MIN = 10;
-   unsigned const HAUTEUR_MAX = 10;
+   unsigned const HAUTEUR_MAX = 1000;
    unsigned const NBRE_OJBETS_MIN = 2;
    unsigned const NBRE_OJBETS_MAX = 9;
 
