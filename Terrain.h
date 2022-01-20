@@ -5,29 +5,40 @@
 #ifndef LABO8_ROBOT_TERRAIN_H
 #define LABO8_ROBOT_TERRAIN_H
 
-#include "Case.h"
 #include "Robot.h"
 #include <vector>
-
-class Robot;
 
 class Terrain{
 
 private:
+   // Propriétés
    unsigned hauteur;
    unsigned largeur;
-   std::vector<std::vector<char>> postion;
+
+   // Méthodes
+   void jouerTour();
+
+
 public:
-   Terrain(unsigned h, unsigned l, unsigned nbreObjets);
-   //Terrain();
+
+   /**
+   * Permet de créer les bordures du terrain
+   * @param h Hauteur du terrain
+   * @param l Largeur du terrain
+   * @param nbreObjets
+   */
+   Terrain(unsigned h, unsigned l);
 
    unsigned getHauteur() const;
 
    unsigned getLargeur() const;
 
-   void setPosRobot(Robot& r);
+   //void setPosRobot(Robot& r);
 
-   void simulation();
+   /**
+   * Permet de démarer le jeu et simuler les déplacements et combats des robots
+   */
+   void demarrerJeu();
 };
 
 #endif //LABO8_ROBOT_TERRAIN_H

@@ -36,18 +36,14 @@ int main() {
    unsigned const NBRE_OBJETS = saisieDansIntervalle(2, 9, "nbre objets"s);
 
    // Création du terrain
-   Terrain t(HAUTEUR, LARGEUR, NBRE_OBJETS);
+   Terrain t(HAUTEUR, LARGEUR);
 
-   srand((unsigned )time(nullptr));
+   // Placer les robots
+   // DIDIER
 
-   Robot R1;
-   t.setPosRobot(R1);
-   Robot R2;
-   t.setPosRobot(R2);
-   Robot R3;
-   t.setPosRobot(R3);
-
-   t.simulation();
+   // Jouer les tours
+   // JEREMIE
+   t.demarrerJeu();
 
  return EXIT_SUCCESS;
 }
