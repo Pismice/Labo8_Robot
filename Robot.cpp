@@ -8,8 +8,9 @@
 
 unsigned Robot::compteur = 0;
 
-Robot::Robot() {
-   id = compteur++;
+Robot::Robot():id(++compteur) {
+   //id = compteur;
+  // ++compteur;
 
 }
 
