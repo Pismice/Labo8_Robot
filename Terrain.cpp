@@ -20,6 +20,7 @@ Terrain::Terrain(unsigned int h, unsigned int l){
    pointMax.setY(h);
 }
 
+
 void Terrain::creerRobot(unsigned nbrObjet) {
 
    for(unsigned j = 0; j < nbrObjet; ++j){ //boucle sur nbr d'objet a créer
