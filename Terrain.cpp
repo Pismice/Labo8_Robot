@@ -43,7 +43,6 @@ void Terrain::deploiement(unsigned nbrObjet) {
                   estUneCaseVierge = false;
                    break;
                }
-              estUneCaseVierge = true;
            }
            Robot r;
            r.setPosition(x,y);
