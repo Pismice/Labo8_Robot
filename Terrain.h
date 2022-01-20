@@ -11,16 +11,17 @@
 
 class Terrain{
 
+    friend std::ostream& operator<<(std::ostream& lhs, const Terrain& rhs);
+
 private:
    // Propriétés
    unsigned hauteur;
    unsigned largeur;
 
-   std::vector<std::vector<Robot>> robots;
+   std::vector<Robot> robot;
 
    // Méthodes
    void jouerTour();
-
 
 public:
 
@@ -36,9 +37,11 @@ public:
 
    unsigned getLargeur() const;
 
-   friend std::ostream& operator<<(std::ostream& lhs, const Terrain& rhs);
+    unsigned getRobot() const;
 
-   //void setPosRobot(Robot& r);
+    void creerRobot(unsigned nbrObjet);
+
+    void idRobot();
 
    /**
    * Permet de démarer le jeu et simuler les déplacements et combats des robots

@@ -6,6 +6,9 @@
 #define LABO8_ROBOT_ROBOT_H
 
 class Robot{
+    friend bool operator==(const Robot& lh, const Robot& rh){
+        return (lh.x == rh.x and lh.y == rh.y);
+    }
 
    //friend void deplacerRobot();
 private:
@@ -15,7 +18,12 @@ private:
    static unsigned compteur;
 public:
    Robot();
-   ~Robot();
+
+   //Robot(const Robot& rb);
+
+   //Robot& operator=(const Robot& r);
+
+  // ~Robot();
 
    unsigned getId() const;
 
