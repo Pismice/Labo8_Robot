@@ -36,6 +36,7 @@ int main() {
    // Création du terrain
    Terrain t(HAUTEUR, LARGEUR);
 
+    srand((unsigned int)time(0));
    // Placer les robots
    t.deploiement(NBRE_OBJETS);
 
