@@ -24,30 +24,31 @@ Terrain::Terrain(unsigned int h, unsigned int l){
 
 void Terrain::deploiement(unsigned nbrObjet) {
 
-   for(unsigned j = 0; j < nbrObjet; ++j){ //boucle sur nbr d'objet a créer
-       bool siCaseVierge = false;
+   for(unsigned j = 0; j < nbrObjet; ++j)
+   {
+       bool estUneCaseVierge = false;
        unsigned x, y;
        robots.reserve(nbrObjet);
 
-       while(!siCaseVierge)
+       while(!estUneCaseVierge)
        {
 
            // Génération aléatoire des coordonnées
-           x = rand() % ((int)pointMax.getY() - 2) + 1;
-           y = rand() % ((int)pointMax.getX() - 2) + 1;
+           x = unsigned(rand() % ((int)pointMax.getY() - 2) + 1);
+           y = unsigned(rand() % ((int)pointMax.getX() - 2) + 1);
 
-          // controle si la case existe déja
+          // Controle si ces x et y existent déjà sur un robot existant
            for(size_t i = 0; i < robots.size(); ++i){
                if(robots.at(i).getPosition().getX() == x and robots.at(i).getPosition().getY() == y){
-                   siCaseVierge = false;
+                  estUneCaseVierge = false;
                    break;
                }
-               siCaseVierge = true;
+              estUneCaseVierge = true;
            }
            Robot r;
            r.setPosition(x,y);
            robots.emplace_back(r);
-           siCaseVierge = true;
+          estUneCaseVierge = true;
        }
    }
 }

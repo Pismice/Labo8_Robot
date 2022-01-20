@@ -8,17 +8,10 @@
 
 unsigned Robot::compteur = 0;
 
-Robot::Robot():id(++compteur) {}
-/*Robot::Robot(const Robot& rb):x(rb.x),y(rb.y) {}
-Robot &Robot::operator=(const Robot &r){
-    this->x = r.x;
-    this->y = r.y;
-    return *this;
+Robot::Robot():id(compteur)
+{
+   ++compteur;
 }
-
-Robot::~Robot() {
-   --compteur;
-}*/
 
 unsigned Robot::getId() const {
    return id;

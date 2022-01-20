@@ -18,14 +18,14 @@ class Terrain{
 private:
    // Propriétés
    Coordonnee pointMax;
-   std::vector<Robot> robots;
+
 
    // Méthodes
    void jouerTour();
    bool siRobotPresentSurLigne(std::vector<Robot>& robotsSurMaLigne, unsigned noLigne) const;
 
 public:
-
+   std::vector<Robot> robots; // TODO REMETTRE EN PRIVATE
    /**
    * Permet de créer les bordures du terrain
    * @param h Hauteur du terrain

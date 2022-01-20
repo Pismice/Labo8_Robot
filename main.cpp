@@ -39,8 +39,18 @@ int main() {
    // Placer les robots
    t.deploiement(NBRE_OBJETS);
 
+   for(Robot r : t.robots)
+   {
+      cout << "ID = " << r.getId() << endl;
+      cout << "x = " << r.getPosition().getX() << endl;
+      cout << "y = " << r.getPosition().getY() << endl;
+      cout << endl;
+   }
+
+   cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
    // Jouer les tours
-   t.demarrerJeu();
+   //t.demarrerJeu();
 
  return EXIT_SUCCESS;
 }
