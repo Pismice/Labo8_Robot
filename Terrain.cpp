@@ -81,13 +81,17 @@ void Terrain::jouerTour()
 
 bool Terrain::siRobotPresentSurLigne(vector<Robot>& robotsSurMaLigne, unsigned noLigne) const
 {
+   bool robotPresent = false;
    for(Robot robot : robots)
    {
       if(robot.getPosition().getX() == noLigne)
       {
          robotsSurMaLigne.emplace_back(robot);
+         robotPresent = true;
       }
    }
+
+   return robotPresent;
 }
 
 ostream &operator<<(ostream &lhs, const Terrain &rhs)
@@ -112,7 +116,7 @@ ostream &operator<<(ostream &lhs, const Terrain &rhs)
       {
          for(Robot r : robotsSurMaLigne)
          {
-            ligne.at(size_t(r.getPosition().getX())) = char(r.getId());
+            ligne.at(size_t(r.getPosition().getX())) = char(r.getId() + '0') ;
          }
       }
       lhs << ligne;
