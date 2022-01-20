@@ -24,7 +24,7 @@ Terrain::Terrain(unsigned int h, unsigned int l){
 
 void Terrain::deploiement(unsigned nbrObjet) {
 
-   for(unsigned j = 0; j < nbrObjet; ++j)
+   for(size_t j = 0; j < nbrObjet; ++j)
    {
        bool estUneCaseVierge = false;
        unsigned x, y;
@@ -40,8 +40,10 @@ void Terrain::deploiement(unsigned nbrObjet) {
            y = unsigned(rand() % ((int)pointMax.getX()));
            estUneCaseVierge = true;
           // Controle si ces x et y existent déjà sur un robot existant
-           for(size_t i = 0; i < robots.size(); ++i){
-               if(robots.at(i).getPosition().getX() == x and robots.at(i).getPosition().getY() == y){
+           for(size_t i = 0; i < robots.size(); ++i)
+           {
+               if(robots.at(i).getPosition().getX() == x and robots.at(i).getPosition().getY() == y)
+               {
                   estUneCaseVierge = false;
                   break;
                }
