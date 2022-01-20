@@ -8,15 +8,20 @@
 #include "Robot.h"
 #include <vector>
 #include <ostream>
+#include <thread>
+#include "Coordonnee.h"
 
 class Terrain{
 
 private:
    // Propriétés
-   unsigned hauteur;
-   unsigned largeur;
+   Coordonnee pointMax;
+   std::vector<Robot> robots;
+   const char plafond = '^';
+   const char sol = '_';
+   const char mur = '|';
+   const char vide = ' ';
 
-   std::vector<std::vector<Robot>> robots;
 
    // Méthodes
    void jouerTour();
