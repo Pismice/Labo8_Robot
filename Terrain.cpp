@@ -75,6 +75,10 @@ void Terrain::jouerTour()
    for(Robot r : robots)
    {
       r.deplacer();
+
+      // Vérifier si dans les cases
+      
+
       // Vérifier si le robot arrive sur la case d'un robot
       for(Robot r2 : robots)
       {
@@ -95,7 +99,7 @@ bool Terrain::siRobotPresentSurLigne(vector<Robot>& robotsSurMaLigne, unsigned n
    bool robotPresent = false;
    for(Robot robot : robots)
    {
-      if(robot.getPosition().getX() == noLigne)
+      if(robot.getPosition().getY() == noLigne)
       {
          robotsSurMaLigne.emplace_back(robot);
          robotPresent = true;
@@ -147,13 +151,13 @@ ostream &operator<<(ostream &lhs, const Terrain &rhs)
    lhs << endl;
 
    // TODO : supprimer l affichage des coordonnees
-//   for(Robot r : rhs.robots)
-//   {
-//      lhs << "ID = " << r.getId() << endl;
-//      lhs << "x = " << r.getPosition().getX() << endl;
-//      lhs << "y = " << r.getPosition().getY() << endl;
-//      lhs << endl;
-//   }
+   for(Robot r : rhs.robots)
+   {
+      lhs << "ID = " << r.getId() << endl;
+      lhs << "x = " << r.getPosition().getX() << endl;
+      lhs << "y = " << r.getPosition().getY() << endl;
+      lhs << endl;
+   }
 
    return lhs;
 }
