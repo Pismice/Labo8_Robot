@@ -6,7 +6,8 @@ Date creation   : <jj.mm.aaaa>
 
 Description     : <à compléter>
 
-Remarque(s)     : <à compléter>
+Remarque(s)     : - Effectuer la vérification comme quoi le nombre de robots doit être
+                    inférieur au nombre de cases n'est pas effectué
 
 Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------

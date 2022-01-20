@@ -19,7 +19,6 @@ private:
    // Propriétés
    Coordonnee pointMax;
 
-
    // Méthodes
    void jouerTour();
    bool siRobotPresentSurLigne(std::vector<Robot>& robotsSurMaLigne, unsigned noLigne) const;

@@ -34,10 +34,8 @@ void Terrain::deploiement(unsigned nbrObjet) {
        {
 
            // Génération aléatoire des coordonnées
-           x = unsigned(rand() % ((int)pointMax.getY()));
-           y = unsigned(rand() % ((int)pointMax.getX()));
-           x = unsigned(rand() % ((int)pointMax.getY()));
-           y = unsigned(rand() % ((int)pointMax.getX()));
+           x = unsigned(rand() % ((int)pointMax.getX()));
+           y = unsigned(rand() % ((int)pointMax.getY()));
            estUneCaseVierge = true;
           // Controle si ces x et y existent déjà sur un robot existant
            for(size_t i = 0; i < robots.size(); ++i)
@@ -65,26 +63,29 @@ void Terrain::demarrerJeu()
    {
       jouerTour();
    }
-
-   // TODO : AFFICHER LE GAGNANT OU PAS ?
 }
 
 void Terrain::jouerTour()
 {
    // Bouger tous les robots
-   for(Robot r : robots)
+   for(Robot& r : robots) // TODO : vraiment & ?
    {
       r.deplacer();
 
       // Vérifier si dans les cases
-      
+      // DIDIER
 
       // Vérifier si le robot arrive sur la case d'un robot
-      for(Robot r2 : robots)
+      //      remove(robots.begin(), robots.end(), r);
+
+
+      for(Robot& r2 : robots)
       {
          if(r == r2)
          {
-            r2.~Robot(); // TODO : comment remove r2 de robots
+            //robots.remove(r2);
+            // TODO : comment remove r2 de robots
+            break;
          }
       }
    }
@@ -97,7 +98,7 @@ void Terrain::jouerTour()
 bool Terrain::siRobotPresentSurLigne(vector<Robot>& robotsSurMaLigne, unsigned noLigne) const
 {
    bool robotPresent = false;
-   for(Robot robot : robots)
+   for(const Robot& robot : robots)
    {
       if(robot.getPosition().getY() == noLigne)
       {
@@ -123,22 +124,23 @@ ostream &operator<<(ostream &lhs, const Terrain &rhs)
    // Affichage des lignes du terrain
    for(unsigned y = 0 ; y < rhs.getHauteur() ; ++y)
    {
+      // Affichage du mur gauche
       lhs << mur;
 
+      // Affichage de la ligne du milieu
       string ligne(rhs.getLargeur(), vide);
       vector<Robot> robotsSurMaLigne;
       if(rhs.siRobotPresentSurLigne(robotsSurMaLigne, y))
       {
-         for(Robot r : robotsSurMaLigne)
+         for(const Robot& r : robotsSurMaLigne)
          {
             ligne.at(size_t(r.getPosition().getX())) = char(r.getId() + '0') ;
          }
       }
       lhs << ligne;
 
+      // Affichage du mur droite
       lhs << mur;
-
-      lhs << robotsSurMaLigne.size();
 
       lhs << endl;
    }
@@ -151,13 +153,13 @@ ostream &operator<<(ostream &lhs, const Terrain &rhs)
    lhs << endl;
 
    // TODO : supprimer l affichage des coordonnees
-   for(Robot r : rhs.robots)
-   {
-      lhs << "ID = " << r.getId() << endl;
-      lhs << "x = " << r.getPosition().getX() << endl;
-      lhs << "y = " << r.getPosition().getY() << endl;
-      lhs << endl;
-   }
+//   for(Robot r : rhs.robots)
+//   {
+//      lhs << "ID = " << r.getId() << endl;
+//      lhs << "x = " << r.getPosition().getX() << endl;
+//      lhs << "y = " << r.getPosition().getY() << endl;
+//      lhs << endl;
+//   }
 
    return lhs;
 }
