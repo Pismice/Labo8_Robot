@@ -35,14 +35,11 @@ int main() {
 
    // Création du terrain
    Terrain t(HAUTEUR, LARGEUR);
-   t.creerRobot(NBRE_OBJETS);
-
 
    // Placer les robots
-   // DIDIER
+   t.deploiement(NBRE_OBJETS);
 
    // Jouer les tours
-   // JEREMIE
    t.demarrerJeu();
 
  return EXIT_SUCCESS;

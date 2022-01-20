@@ -22,6 +22,7 @@ private:
 
    // Méthodes
    void jouerTour();
+   bool siRobotPresentSurLigne(std::vector<Robot>& robotsSurMaLigne, unsigned noLigne) const;
 
 public:
 
@@ -32,16 +33,9 @@ public:
    * @param nbreObjets
    */
    Terrain(unsigned h, unsigned l);
-
    unsigned getHauteur() const;
-
    unsigned getLargeur() const;
-
-    unsigned getRobot() const;
-
-    void creerRobot(unsigned nbrObjet);
-
-    void idRobot();
+   void deploiement(unsigned nbrObjet);
 
    /**
    * Permet de démarer le jeu et simuler les déplacements et combats des robots

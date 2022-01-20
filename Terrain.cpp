@@ -14,6 +14,7 @@ const char plafond = '^';
 const char sol = '_';
 const char mur = '|';
 const char vide = ' ';
+const chrono::duration delai = 500ms;
 
 Terrain::Terrain(unsigned int h, unsigned int l){
    pointMax.setX(l);
@@ -21,15 +22,15 @@ Terrain::Terrain(unsigned int h, unsigned int l){
 }
 
 
-void Terrain::creerRobot(unsigned nbrObjet) {
+void Terrain::deploiement(unsigned nbrObjet) {
 
    for(unsigned j = 0; j < nbrObjet; ++j){ //boucle sur nbr d'objet a créer
        bool siCaseVierge = false;
        unsigned x, y;
        robots.reserve(nbrObjet);
-       robots.size();
 
-       while(!siCaseVierge){
+       while(!siCaseVierge)
+       {
 
            // Génération aléatoire des coordonnées
            x = rand() % ((int)pointMax.getY() - 2) + 1;
@@ -51,7 +52,8 @@ void Terrain::creerRobot(unsigned nbrObjet) {
    }
 }
 
-void Terrain::demarrerJeu() {
+void Terrain::demarrerJeu()
+{
    // Afficher terrain
    cout << (*this);
 
@@ -64,7 +66,8 @@ void Terrain::demarrerJeu() {
    // TODO : AFFICHER LE GAGNANT OU PAS ?
 }
 
-void Terrain::jouerTour() {
+void Terrain::jouerTour()
+{
    // Bouger tous les robots
    for(Robot r : robots)
    {
@@ -73,9 +76,22 @@ void Terrain::jouerTour() {
 
    // Afficher le terrrain (avec surchage <<)
    cout << (*this);
+   this_thread::sleep_for(delai);
 }
 
-ostream &operator<<(ostream &lhs, const Terrain &rhs) {
+bool Terrain::siRobotPresentSurLigne(vector<Robot>& robotsSurMaLigne, unsigned noLigne) const
+{
+   for(Robot robot : robots)
+   {
+      if(robot.getPosition().getX() == noLigne)
+      {
+         robotsSurMaLigne.emplace_back(robot);
+      }
+   }
+}
+
+ostream &operator<<(ostream &lhs, const Terrain &rhs)
+{
    system("cls");
 
    // Affichage du plafond
@@ -89,12 +105,18 @@ ostream &operator<<(ostream &lhs, const Terrain &rhs) {
    for(unsigned y = 0 ; y < rhs.getHauteur() ; ++y)
    {
       lhs << mur;
-      // TODO : tester si la ligne contient des robots
-      for(unsigned x = 0 ; x < rhs.getLargeur() ; ++x)
-      {
 
-         lhs << vide;
+      string ligne(rhs.getLargeur(), vide);
+      vector<Robot> robotsSurMaLigne;
+      if(rhs.siRobotPresentSurLigne(robotsSurMaLigne, y))
+      {
+         for(Robot r : robotsSurMaLigne)
+         {
+            ligne.at(size_t(r.getPosition().getX())) = char(r.getId());
+         }
       }
+      lhs << ligne;
+
       lhs << mur;
       lhs << endl;
    }
