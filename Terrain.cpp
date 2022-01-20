@@ -36,19 +36,18 @@ void Terrain::deploiement(unsigned nbrObjet) {
            // Génération aléatoire des coordonnées
            x = unsigned(rand() % ((int)pointMax.getY() - 2) + 1);
            y = unsigned(rand() % ((int)pointMax.getX() - 2) + 1);
-
+           estUneCaseVierge = true;
           // Controle si ces x et y existent déjà sur un robot existant
            for(size_t i = 0; i < robots.size(); ++i){
                if(robots.at(i).getPosition().getX() == x and robots.at(i).getPosition().getY() == y){
                   estUneCaseVierge = false;
-                   break;
+                  break;
                }
            }
-           Robot r;
-           r.setPosition(x,y);
-           robots.emplace_back(r);
-          estUneCaseVierge = true;
        }
+       Robot r;
+       r.setPosition(x,y);
+       robots.emplace_back(r);
    }
 }
 

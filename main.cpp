@@ -26,12 +26,12 @@ int main() {
    unsigned const HAUTEUR_MIN = 10;
    unsigned const HAUTEUR_MAX = 1000;
    unsigned const NBRE_OJBETS_MIN = 2;
-   unsigned const NBRE_OJBETS_MAX = 9;
+   unsigned const NBRE_OJBETS_MAX = 12;
 
    // Récupération des valeurs utilisateur
    unsigned const LARGEUR = saisieDansIntervalle(LARGEUR_MIN, LARGEUR_MAX, "largeur"s);
    unsigned const HAUTEUR = saisieDansIntervalle(HAUTEUR_MIN, HAUTEUR_MAX, "hauteur"s);
-   unsigned const NBRE_OBJETS = saisieDansIntervalle(2, 9, "nbre objets"s);
+   unsigned const NBRE_OBJETS = saisieDansIntervalle(2, 12, "nbre objets"s);
 
    // Création du terrain
    Terrain t(HAUTEUR, LARGEUR);
