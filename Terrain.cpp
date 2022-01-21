@@ -18,6 +18,7 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 #include <iostream>
 #include <thread>
 #include <algorithm>
+#include <experimental/random>
 
 using namespace std;
 
@@ -31,7 +32,7 @@ Terrain::Terrain(DataType h, DataType l){
 
 void Terrain::deploiement(unsigned nbrObjet) {
 
-   robots.resize(nbrObjet);
+   //robots.resize(nbrObjet);
 
    for(size_t j = 0; j < nbrObjet; ++j)
    {
@@ -56,7 +57,10 @@ void Terrain::deploiement(unsigned nbrObjet) {
                }
            }
        }
-       robots.at(j).setPosition(x,y);
+       Robot r;
+       r.setPosition(x,y);
+       robots.push_back(r);
+       //robots.at(j).setPosition(x,y);
    }
 }
 
@@ -90,7 +94,7 @@ void Terrain::jouerTour()
        {
            r.setPosition(r.getPosition().getX(), (pointMax.getY() - valeurRebondissement));
        }
-       if(r.getPosition().getX() <= pointMin.getX())
+       if(r.getPosition().getX() == 0 or r.getPosition().getX() == numeric_limits<unsigned>::max())
        {
            r.setPosition(pointMin.getX() + valeurRebondissement, r.getPosition().getY());
        }

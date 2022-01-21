@@ -30,6 +30,12 @@ void Robot::deplacer()
 {
    auto d = short(unsigned(rand()) % nbreDirections);
 
+void Robot::deplacer() {
+
+    srand((unsigned int)time(0));
+
+    int d = int(rand() % nbreDirections);
+
    switch (d) {
       case int(Direction::HAUT) :
               setPosition(position.getX(), position.getY() - uniteDeplacement);

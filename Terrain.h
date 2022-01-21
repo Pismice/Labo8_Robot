@@ -43,7 +43,7 @@ private:
    DataType valeurRebondissement = 1;
 
    //std::chrono::duration<unsigned, std::milli> delai = 500;
-   duration delai = std::chrono::duration_cast<duration>(std::chrono::seconds (1));
+   duration delai = std::chrono::duration_cast<duration>(std::chrono::milliseconds (1000));
 
    // Méthodes
    void jouerTour();
