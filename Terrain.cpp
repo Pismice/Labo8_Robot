@@ -34,8 +34,8 @@ void Terrain::deploiement(unsigned nbrObjet) {
        {
 
            // Génération aléatoire des coordonnées
-           x = unsigned(rand() % ((int)pointMax.getX()));
-           y = unsigned(rand() % ((int)pointMax.getY()));
+           x = unsigned(rand() % ((int)Terrain::getLargeur()));
+           y = unsigned(rand() % ((int)Terrain::getHauteur()));
            estUneCaseVierge = true;
           // Controle si ces x et y existent déjà sur un robot existant
            for(size_t i = 0; i < robots.size(); ++i)
@@ -73,17 +73,17 @@ void Terrain::jouerTour()
       r.deplacer();
 
        // Vérifier si dans les cases
-       if(r.getPosition().getY() <= MINY){ // hauteur mini
-           r.setPosition(r.getPosition().getX(), MINY - r.getPosition().getY() + 2);
+       if(r.getPosition().getY() == MINY){ // hauteur mini
+           r.setPosition(r.getPosition().getX(), (MINY + 2));
        }
-       if(r.getPosition().getY() >= pointMax.getY()){
-           r.setPosition(r.getPosition().getX(), r.getPosition().getY() - pointMax.getY());
+       if(r.getPosition().getY() == pointMax.getY()){
+           r.setPosition(r.getPosition().getX(), (Terrain::getHauteur() - 2));
        }
-       if(r.getPosition().getX() <= MINX){
-           r.setPosition(MINX - r.getPosition().getX() + 2, r.getPosition().getY());
+       if(r.getPosition().getX() == MINX){
+           r.setPosition((MINX + 2), r.getPosition().getY());
        }
-       if(r.getPosition().getX() >= pointMax.getX()) {
-           r.setPosition(r.getPosition().getX() - pointMax.getX(), r.getPosition().getY());
+       if(r.getPosition().getX() == pointMax.getX()) {
+           r.setPosition((Terrain::getLargeur() - 2), r.getPosition().getY());
        }
 
       // Vérifier si le robot arrive sur la case d'un robot
