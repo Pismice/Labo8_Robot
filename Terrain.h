@@ -18,6 +18,8 @@ class Terrain{
 private:
    // Propriétés
    Coordonnee pointMax;
+   const unsigned MINX = 0;
+   const unsigned MINY = 0;
 
    // Méthodes
    void jouerTour();

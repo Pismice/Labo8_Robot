@@ -72,8 +72,19 @@ void Terrain::jouerTour()
    {
       r.deplacer();
 
-      // Vérifier si dans les cases
-      // DIDIER
+       // Vérifier si dans les cases
+       if(r.getPosition().getY() <= MINY){ // hauteur mini
+           r.setPosition(r.getPosition().getX(), MINY - r.getPosition().getY() + 2);
+       }
+       if(r.getPosition().getY() >= pointMax.getY()){
+           r.setPosition(r.getPosition().getX(), r.getPosition().getY() - pointMax.getY());
+       }
+       if(r.getPosition().getX() <= MINX){
+           r.setPosition(MINX - r.getPosition().getX() + 2, r.getPosition().getY());
+       }
+       if(r.getPosition().getX() >= pointMax.getX()) {
+           r.setPosition(r.getPosition().getX() - pointMax.getX(), r.getPosition().getY());
+       }
 
       // Vérifier si le robot arrive sur la case d'un robot
       //      remove(robots.begin(), robots.end(), r);
@@ -173,3 +184,4 @@ unsigned Terrain::getLargeur() const
 {
    return unsigned(this->pointMax.getX());
 }
+
