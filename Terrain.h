@@ -1,6 +1,18 @@
-//
-// Created by admin on 16.01.2022.
-//
+/*
+-----------------------------------------------------------------------------------
+Nom du fichier  : Terrain.h
+Auteur(s)       : Jérémie Santoro, Didier Lokokpe
+Date creation   : 21.01.2022
+
+Description     : Interface permettant de gèrer et simuler un terrain en 2D,
+                  il peut via un opérateur de flux envoyer son affichage, générer
+                  des robots, et gérer une partie de bataille de robots
+
+Remarque(s)     : -
+
+Compilateur     : Mingw-w64 g++ 11.2.0
+-----------------------------------------------------------------------------------
+*/
 
 #ifndef LABO8_ROBOT_TERRAIN_H
 #define LABO8_ROBOT_TERRAIN_H
@@ -26,16 +38,16 @@ class Terrain{
 
 private:
    // Propriétés
-   Coordonnee pointMax;
-   Coordonnee pointMin;
-   unsigned valeurRebondissement = 1;
+   Coordonnee pointMax{};
+   Coordonnee pointMin{};
+   DataType valeurRebondissement = 1;
 
    //std::chrono::duration<unsigned, std::milli> delai = 500;
    duration delai = std::chrono::duration_cast<duration>(std::chrono::seconds (1));
 
    // Méthodes
    void jouerTour();
-   bool siRobotPresentSurLigne(std::vector<Robot>& robotsSurMaLigne, unsigned noLigne) const;
+   bool siRobotPresentSurLigne(std::vector<Robot>& robotsSurMaLigne, DataType noLigne) const;
 
 public:
    std::vector<Robot> robots; // TODO REMETTRE EN PRIVATE
@@ -45,7 +57,7 @@ public:
    * @param l Largeur du terrain
    * @param nbreObjets
    */
-   Terrain(unsigned h, unsigned l);
+   Terrain(DataType h, DataType l);
    void deploiement(unsigned nbrObjet);
 
    /**

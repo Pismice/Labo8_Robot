@@ -1,13 +1,13 @@
 /*
 -----------------------------------------------------------------------------------
-Nom du fichier  : <nom du fichier>.<xxx> (xxx = h ou cpp)
-Auteur(s)       : Jérémie Santoro
-Date creation   : <jj.mm.aaaa>
+Nom du fichier  : main.cpp
+Auteur(s)       : Jérémie Santoro, Didier Lokokpe
+Date creation   : 21.01.2022
 
-Description     : <à compléter>
+Description     : Ce programme permet d'utiliser la classe Terrain
+                  qui permet de créer un jeu de simulation de batailles de robots
 
-Remarque(s)     : - Effectuer la vérification comme quoi le nombre de robots doit être
-                    inférieur au nombre de cases n'est pas effectué
+Remarque(s)     : - Une fois le jeu terminé, l'utilisateur peut quitter le programme
 
 Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
@@ -34,17 +34,17 @@ int main() {
    unsigned const HAUTEUR = saisieDansIntervalle(HAUTEUR_MIN, HAUTEUR_MAX, "hauteur"s);
    unsigned const NBRE_OBJETS = saisieDansIntervalle(NBRE_OJBETS_MIN , NBRE_OJBETS_MAX, "nbre objets"s);
 
-   // TODO : BON ENDROIT ?
+   // Initialisation du srand
    srand((unsigned int)time(nullptr));
 
    // Création du terrain
-   Terrain t(HAUTEUR, LARGEUR);
+   Terrain monTerrain((DataType(HAUTEUR)), DataType(LARGEUR));
 
    // Placer les robots
-   t.deploiement(NBRE_OBJETS);
+   monTerrain.deploiement(NBRE_OBJETS);
 
    // Jouer les tours
-   t.demarrerJeu();
+   monTerrain.demarrerJeu();
 
  return EXIT_SUCCESS;
 }
