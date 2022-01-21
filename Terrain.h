@@ -42,6 +42,7 @@ private:
    Coordonnee pointMax{};
    Coordonnee pointMin{};
    DataType valeurRebondissement = 1;
+   std::vector<Robot> robots;
 
    //std::chrono::duration<unsigned, std::milli> delai = 500;
    duration delai = std::chrono::duration_cast<duration>(std::chrono::milliseconds (1000));
@@ -51,14 +52,18 @@ private:
    bool siRobotPresentSurLigne(std::vector<Robot>& robotsSurMaLigne, DataType noLigne) const;
 
 public:
-   std::vector<Robot> robots; // TODO REMETTRE EN PRIVATE
    /**
    * Permet de créer les bordures du terrain
    * @param h Hauteur du terrain
    * @param l Largeur du terrain
-   * @param nbreObjets
    */
    Terrain(DataType h, DataType l);
+
+   /**
+    * Permet de déployer un nombre choisi de robots
+    * sur le terrain
+    * @param nbrObjet Nombre d'objects voulus
+    */
    void deploiement(unsigned nbrObjet);
 
    /**
