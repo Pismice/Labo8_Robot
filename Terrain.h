@@ -27,8 +27,8 @@ class Terrain{
 private:
    // Propriétés
    Coordonnee pointMax;
-   const unsigned MINX = 0;
-   const unsigned MINY = 0;
+   Coordonnee pointMin;
+
    //std::chrono::duration<unsigned, std::milli> delai = 500;
    duration test1 = std::chrono::duration_cast<duration>(std::chrono::milliseconds(1000));
 
@@ -45,8 +45,6 @@ public:
    * @param nbreObjets
    */
    Terrain(unsigned h, unsigned l);
-   unsigned getHauteur() const;
-   unsigned getLargeur() const;
    void deploiement(unsigned nbrObjet);
 
    /**

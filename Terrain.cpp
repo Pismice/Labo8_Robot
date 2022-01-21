@@ -7,8 +7,10 @@ using namespace std;
 
 
 Terrain::Terrain(unsigned int h, unsigned int l){
-   pointMax.setX(l);
-   pointMax.setY(h);
+   pointMax.setX(l-1);
+   pointMax.setY(h-1);
+   pointMin.setX(0);
+   pointMin.setX(0);
 }
 
 
@@ -25,8 +27,8 @@ void Terrain::deploiement(unsigned nbrObjet) {
        {
 
            // Génération aléatoire des coordonnées
-           x = unsigned(rand() % ((int)Terrain::getLargeur()));
-           y = unsigned(rand() % ((int)Terrain::getHauteur()));
+           x = unsigned(rand() % ((int)Terrain::pointMax.getX()));
+           y = unsigned(rand() % ((int)Terrain::pointMax.getY()));
            estUneCaseVierge = true;
           // Controle si ces x et y existent déjà sur un robot existant
            for(size_t i = 0; i < robots.size(); ++i)
@@ -65,17 +67,21 @@ void Terrain::jouerTour()
       r.deplacer();
 
        // Vérifier si dans les cases
-       if(r.getPosition().getY() == MINY){ // hauteur mini
-           r.setPosition(r.getPosition().getX(), (MINY + 2));
+       if(r.getPosition().getY() <= pointMin.getY())
+       {
+           r.setPosition(r.getPosition().getX(), (pointMin.getY() + 1));
        }
-       if(r.getPosition().getY() == pointMax.getY()){
-           r.setPosition(r.getPosition().getX(), (Terrain::getHauteur() - 2));
+       if(r.getPosition().getY() >= pointMax.getY())
+       {
+           r.setPosition(r.getPosition().getX(), (pointMax.getY() - 1));
        }
-       if(r.getPosition().getX() == MINX){
-           r.setPosition((MINX + 2), r.getPosition().getY());
+       if(r.getPosition().getX() <= pointMin.getX())
+       {
+           r.setPosition(pointMin.getX() + 1, r.getPosition().getY());
        }
-       if(r.getPosition().getX() == pointMax.getX()) {
-           r.setPosition((Terrain::getLargeur() - 2), r.getPosition().getY());
+       if(r.getPosition().getX() >= pointMax.getX())
+       {
+           r.setPosition(pointMin.getX() - 1, r.getPosition().getY());
        }
 
       // Vérifier si le robot arrive sur la case d'un robot
@@ -113,20 +119,20 @@ ostream &operator<<(ostream &lhs, const Terrain &rhs)
    system("cls");
 
    // Affichage du plafond
-   for(unsigned x = 0 ; x < rhs.getLargeur() + 2 ; ++x)
+   for(unsigned x = 0 ; x < rhs.pointMax.getX() + 3 ; ++x)
    {
       lhs << rhs.plafond;
    }
    lhs << endl;
 
    // Affichage des lignes du terrain
-   for(unsigned y = 0 ; y < rhs.getHauteur() ; ++y)
+   for(unsigned y = 0 ; y < rhs.pointMax.getY() + 1; ++y)
    {
       // Affichage du mur gauche
       lhs << rhs.mur;
 
       // Affichage de la ligne du milieu
-      string ligne(rhs.getLargeur(), rhs.vide);
+      string ligne(rhs.pointMax.getX() + 1, rhs.vide);
       vector<Robot> robotsSurMaLigne;
       if(rhs.siRobotPresentSurLigne(robotsSurMaLigne, y))
       {
@@ -144,7 +150,7 @@ ostream &operator<<(ostream &lhs, const Terrain &rhs)
    }
 
    // Affichage du sol
-   for(unsigned x = 0 ; x < rhs.getLargeur() + 2 ; ++x)
+   for(unsigned x = 0 ; x < rhs.pointMax.getX() + 3 ; ++x)
    {
       lhs << rhs.sol;
    }
@@ -152,14 +158,3 @@ ostream &operator<<(ostream &lhs, const Terrain &rhs)
 
    return lhs;
 }
-
-unsigned Terrain::getHauteur() const
-{
-   return unsigned(this->pointMax.getY());
-}
-
-unsigned Terrain::getLargeur() const
-{
-   return unsigned(this->pointMax.getX());
-}
-
