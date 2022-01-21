@@ -24,12 +24,12 @@ using namespace std;
 
 int main() {
    // Bornes des valeurs utilisateur
-   unsigned const LARGEUR_MIN = 2;
+   unsigned const LARGEUR_MIN = 10;
    unsigned const LARGEUR_MAX = 1000;
-   unsigned const HAUTEUR_MIN = 2;
+   unsigned const HAUTEUR_MIN = 10;
    unsigned const HAUTEUR_MAX = 1000;
    unsigned const NBRE_OJBETS_MIN = 2;
-   unsigned const NBRE_OJBETS_MAX = 25;
+   unsigned const NBRE_OJBETS_MAX = 9;
 
    // Récupération des valeurs utilisateur
    unsigned const LARGEUR = saisieDansIntervalle(LARGEUR_MIN, LARGEUR_MAX, "largeur"s);
