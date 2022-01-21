@@ -26,7 +26,7 @@ private:
 
 public:
    Robot();
-   ~Robot();
+   //~Robot();
 
    Robot& operator=(const Robot& r)
    {

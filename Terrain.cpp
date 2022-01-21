@@ -7,6 +7,18 @@ using namespace std;
 
 // TODO : bonne place ?
 
+/*class sontEgaux{
+private:
+    Robot rb;
+public:
+    sontEgaux(const Robot& init): rb(init){
+        //rb.setX(init.getX());
+        //rb.setY(init.getY());
+    }
+    bool operator() (const Robot& param){
+        return !(rb == param);
+    }
+};*/
 
 Terrain::Terrain(unsigned int h, unsigned int l){
    pointMax.setX(l);

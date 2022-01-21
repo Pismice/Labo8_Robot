@@ -6,17 +6,17 @@
 #include <cstdlib>
 #include <thread>
 
-unsigned Robot::compteur = 0;
+unsigned Robot::compteur = 1;
 
 Robot::Robot():id(compteur)
 {
    ++compteur;
 }
 
-Robot::~Robot()
+/*Robot::~Robot()
 {
    --compteur;
-}
+}*/
 
 unsigned Robot::getId() const {
    return id;
