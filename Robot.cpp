@@ -6,7 +6,9 @@
 #include <cstdlib>
 #include <thread>
 
-unsigned Robot::compteur = 1;
+#include <iostream> // delete
+
+unsigned Robot::compteur = 0;
 
 Robot::Robot():id(compteur)
 {
