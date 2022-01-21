@@ -28,8 +28,8 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 typedef std::chrono::duration<unsigned long long> duration;
 
 class Terrain{
-
-    friend std::ostream& operator<<(std::ostream& lhs, const Terrain& rhs);
+   // Fonctions amies
+   friend std::ostream& operator<<(std::ostream& lhs, const Terrain& rhs);
 
    // Constantes statiques
    const static char plafond = '^';
@@ -39,17 +39,29 @@ class Terrain{
 
 private:
    // Propriétés
-   const Coordonnee pointMax{};
-   const Coordonnee pointMin{};
-   const DataType valeurRebondissement = 2;
-   const unsigned nbreSecondesDelai = 1;
+   const Coordonnee pointMax;     // Correspond au point en bas à droite
+   const Coordonnee pointMin;     // Correspond au point en haut à gauche
+   const DataType valeurRebondissement = 2;  // Capacité de rebondissement des robots
+   const unsigned nbreMsDelai = 1000;     // Délai entre chaque tour en seconde(s)
 
-   std::vector<Robot> robots;
+   std::vector<Robot> robots;    // Contient tous les robots du jeu
 
-   duration delai = std::chrono::duration_cast<duration>(std::chrono::seconds (nbreSecondesDelai));
+   duration delai = std::chrono::duration_cast<duration>(std::chrono::milliseconds (nbreMsDelai));
 
    // Méthodes
+
+   /**
+    * Permet de jouer un tour sur tous les robots
+    */
    void jouerTour();
+
+   /**
+    * Permet de savoir si un ou plusieurs robots sont présents sur la ligne
+   // et retourne les robots présents
+    * @param robotsSurMaLigne Liste de robots
+    * @param noLigne Ligne à vérifier
+    * @return Si un ou plusieurs robots sont présents
+    */
    bool siRobotPresentSurLigne(std::vector<Robot>& robotsSurMaLigne, DataType noLigne) const;
 
 public:

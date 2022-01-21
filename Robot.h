@@ -16,8 +16,6 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 #define LABO8_ROBOT_ROBOT_H
 #include "Coordonnee.h"
 
-enum class Direction {HAUT, BAS, DROITE, GAUCHE};
-
 class Robot{
 
    // Fonctions amies
@@ -28,19 +26,26 @@ class Robot{
    }
 
    // Propriétés statiques
-   static unsigned compteur;
-   const static unsigned nbreDirections; // TODO : MOYEN DE RECUP LA TAILLE DE L ENUM CLASS
+   static unsigned compteur;     // Nombre de robots  instanciés
+   const static unsigned nbreDirections; // Nombre de directions possibles
 
 private:
    // Propriétés privées
    unsigned id;
-   Coordonnee position{};
+   Coordonnee position;
    const DataType uniteDeplacement = 1;
 
 public:
    Robot();
    ~Robot();
 
+   enum class Direction {HAUT, BAS, DROITE, GAUCHE};
+
+   /**
+    * Opérateur de copie
+    * @param r Robot à copier
+    * @return Robot affécté
+    */
    Robot& operator=(const Robot& r)
    {
       id = r.id;
@@ -48,22 +53,38 @@ public:
       return *this;
    }
 
+   /**
+    * Retourne la position du robot
+    * @return Position du robot
+    */
    Coordonnee getPosition() const
    {
       return this->position;
    }
 
+   /**
+    * Assigne la position en fonction de x et y
+    * @param x Valeur x
+    * @param y Valeur y
+    */
    void setPosition(DataType x, DataType y)
    {
       this->position.setX(x);
       this->position.setY(y);
    }
 
+   /**
+    * Retourne l'id du robot
+    * @return Id du robot
+    */
    unsigned getId() const
    {
       return id;
    }
 
+   /**
+    * Permet au robot de se déplacer
+    */
    void deplacer();
 };
 

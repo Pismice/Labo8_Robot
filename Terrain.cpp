@@ -22,12 +22,7 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 
 using namespace std;
 
-Terrain::Terrain(DataType h, DataType l){
-   pointMax.setX(l-1);
-   pointMax.setY(h-1);
-   pointMin.setX(0);
-   pointMin.setX(0);
-}
+Terrain::Terrain(DataType h, DataType l) : pointMax(l-1,h-1), pointMin(0,0) {}
 
 void Terrain::deploiement(unsigned nbrObjet) {
 
@@ -70,7 +65,8 @@ void Terrain::demarrerJeu()
    {
       jouerTour();
    }
-   cout << "finitooooo";
+   cout << "La partie est terminée" << endl;
+   cout << "Appuyez sur une touche pour continuer" << endl;
    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
@@ -82,15 +78,15 @@ void Terrain::jouerTour()
        r.deplacer();
 
        // Vérifier si dans les limites du terrain
-       if(r.getPosition().getY() <= pointMin.getY())
+       if(r.getPosition().getY() < pointMin.getY())
        {
            r.setPosition(r.getPosition().getX(), (pointMin.getY() + valeurRebondissement));
        }
-       if(r.getPosition().getY() >= pointMax.getY())
+       if(r.getPosition().getY() > pointMax.getY())
        {
            r.setPosition(r.getPosition().getX(), (pointMax.getY() - valeurRebondissement));
        }
-       if(r.getPosition().getX() <= pointMin.getX())
+       if(r.getPosition().getX() < pointMin.getX())
        {
            r.setPosition(pointMin.getX() + valeurRebondissement, r.getPosition().getY());
        }
@@ -100,7 +96,7 @@ void Terrain::jouerTour()
        }
 
       // Vérifier si le robot arrive sur la case d'un robot
-      for(auto i = robots.begin(); i != robots.end(); i++)
+      for(auto i = robots.begin(); i < robots.end(); ++i)
       {
          if(*i == r)
          {

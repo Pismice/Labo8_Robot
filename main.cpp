@@ -10,6 +10,8 @@ Description     : Ce programme permet d'utiliser la classe Terrain
 Remarque(s)     : - Une fois le jeu terminé, l'utilisateur peut quitter le programme
                   - Ne gère pas le cas ou le nombre de robots est supérieurs au nombre
                     de cases
+                  - Les entrées utilisateur sont gérées et l'utilisateur est invité
+                    à rentrer sa valeur à nouveau jusqu'à ce que celle-ci soit correcte
 
 Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
@@ -48,5 +50,5 @@ int main() {
    // Jouer les tours
    monTerrain.demarrerJeu();
 
- return EXIT_SUCCESS;
+   return EXIT_SUCCESS;
 }

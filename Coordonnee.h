@@ -6,7 +6,9 @@ Date creation   : 21.01.2022
 
 Description     : Cette interface accompagnée de ses définitions, permet de gèrer
                   de manière centralisée la représentation dans l'espace
-Remarque(s)     : -
+Remarque(s)     : Le choix du int a été car il parait plus logique pour représenter des
+                  points dans un système carthésien, le jeu pourrait évaluer de manière
+                  intéressante grâce à ca
 
 Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
@@ -24,6 +26,10 @@ class Coordonnee {
 
 
 public:
+   // Constructeur
+   Coordonnee(DataType newX, DataType newY) : x(newX), y(newY){}
+   Coordonnee(){}
+
    // Getters
    DataType getX() const
    {
