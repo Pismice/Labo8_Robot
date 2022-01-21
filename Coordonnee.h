@@ -24,7 +24,6 @@ class Coordonnee {
    DataType x;
    DataType y;
 
-
 public:
    // Constructeur
    Coordonnee(){}
@@ -49,9 +48,6 @@ public:
    {
       this->y = newY;
    }
-
-
 };
-
 
 #endif //LABO8_ROBOT_COORDONNEE_H

@@ -10,6 +10,7 @@ Description     : Définitions permettant de gèrer et simuler un terrain en 2D,
 
 Remarque(s)     : - Ne gère pas le cas ou le nombre de robots est supérieurs au nombre
                     de cases
+                  - Sort des informations dans le flux cout
 
 Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
@@ -24,18 +25,25 @@ using namespace std;
 
 Terrain::Terrain(DataType h, DataType l) : pointMax(l-1,h-1), pointMin(0,0) {}
 
-void Terrain::deploiement(unsigned nbrObjet) {
+const char Terrain::PLAFOND = '^';
+const char Terrain::SOL = '_';
+const char Terrain::MUR = '|';
+const char Terrain::VIDE = ' ';
 
+void Terrain::deploiement(unsigned nbrObjet)
+{
+   // Permet d'obtenir le nombre de robots voulus
    robots.resize(nbrObjet);
 
+   // Boucle sur chaque objet
    for(size_t j = 0; j < nbrObjet; ++j)
    {
        bool estUneCaseVierge = false;
        DataType x, y;
 
+       // Tant que la case n'est pas vierge, trouve un autre point
        while(!estUneCaseVierge)
        {
-
            // Génération aléatoire des coordonnées
            x = DataType (rand() % ((int)Terrain::pointMax.getX()));
            y = DataType (rand() % ((int)Terrain::pointMax.getY()));
@@ -75,6 +83,7 @@ void Terrain::jouerTour()
    // Bouger tous les robots
    for(Robot& r : robots)
    {
+       // Déplace le robot
        r.deplacer();
 
        // Vérifier si dans les limites du terrain
@@ -100,6 +109,7 @@ void Terrain::jouerTour()
       {
          if(*i == r)
          {
+            // Supprime le robot écrasé par le robot r
             robots.erase(i);
          }
       }
@@ -107,16 +117,20 @@ void Terrain::jouerTour()
 
    // Afficher le terrrain (avec surchage <<)
    cout << (*this);
+
+   // Permet de mettre en pause le programme pour qu'un humain puisse lire le jeu
    this_thread::sleep_for(delai);
 }
 
 bool Terrain::siRobotPresentSurLigne(vector<Robot>& robotsSurMaLigne, DataType noLigne) const
 {
    bool robotPresent = false;
+
    for(const Robot& robot : robots)
    {
       if(robot.getPosition().getY() == noLigne)
       {
+         // Ajoute les vecteurs présent sur cette ligne
          robotsSurMaLigne.emplace_back(robot);
          robotPresent = true;
       }
@@ -127,9 +141,10 @@ bool Terrain::siRobotPresentSurLigne(vector<Robot>& robotsSurMaLigne, DataType n
 
 ostream &operator<<(ostream &lhs, const Terrain &rhs)
 {
+   // "Clear" la console (Marche uniquement sur Windows)
    system("cls");
 
-   // Affichage du PLAFOND
+   // Affichage du plafond
    for(DataType x = 0 ; x < rhs.pointMax.getX() + 2 ; ++x)
    {
       lhs << Terrain::PLAFOND;

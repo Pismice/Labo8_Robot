@@ -25,7 +25,7 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 #include <chrono>
 #include "Coordonnee.h"
 
-typedef std::chrono::duration<unsigned long long> duration;
+typedef std::chrono::duration<unsigned long long> duree;
 
 class Terrain{
    // Fonctions amies
@@ -38,10 +38,10 @@ class Terrain{
    friend std::ostream& operator<<(std::ostream& lhs, const Terrain& rhs);
 
    // Constantes statiques
-   const static char PLAFOND = '^';
-   const static char SOL = '_';
-   const static char MUR = '|';
-   const static char VIDE = ' ';
+   const static char PLAFOND;
+   const static char SOL;
+   const static char MUR;
+   const static char VIDE;
 
 private:
    // Propriétés
@@ -52,7 +52,8 @@ private:
 
    std::vector<Robot> robots;    // Contient tous les robots du jeu
 
-   duration delai = std::chrono::duration_cast<duration>(std::chrono::milliseconds (nbreMsDelai));
+   // Delai d'attente entre chaque tour
+   duree delai = std::chrono::duration_cast<duree>(std::chrono::milliseconds (nbreMsDelai));
 
    // Méthodes
    /**

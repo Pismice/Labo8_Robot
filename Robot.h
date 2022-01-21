@@ -21,8 +21,8 @@ class Robot{
    // Fonctions amies
    friend bool operator==(const Robot& lh, const Robot& rh)
    {
-    return (lh.position.getX() == rh.position.getX())
-            and (lh.position.getY() == rh.position.getY()) and (lh.id != rh.id);
+      return (lh.position.getX() == rh.position.getX())
+             and (lh.position.getY() == rh.position.getY()) and (lh.id != rh.id);
    }
 
    // Propriétés statiques
@@ -36,9 +36,11 @@ private:
    const DataType uniteDeplacement = 1;
 
 public:
+   // Constructeurs et destructeurs
    Robot();
    ~Robot();
 
+   // Différentes directions possibles
    enum class Direction {HAUT, BAS, DROITE, GAUCHE};
 
    /**
