@@ -5,7 +5,7 @@
 #ifndef LABO8_ROBOT_COORDONNEE_H
 #define LABO8_ROBOT_COORDONNEE_H
 
-using DataType = int;
+using DataType = unsigned;
 
 class Coordonnee {
    // Propriétés

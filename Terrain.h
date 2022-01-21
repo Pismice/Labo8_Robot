@@ -9,17 +9,28 @@
 #include <vector>
 #include <ostream>
 #include <thread>
+#include <chrono>
 #include "Coordonnee.h"
+
+typedef std::chrono::duration<unsigned long long> duration;
 
 class Terrain{
 
     friend std::ostream& operator<<(std::ostream& lhs, const Terrain& rhs);
+
+   // Constantes statiques
+   const static char plafond = '^';
+   const static char sol = '_';
+   const static char mur = '|';
+   const static char vide = ' ';
 
 private:
    // Propriétés
    Coordonnee pointMax;
    const unsigned MINX = 0;
    const unsigned MINY = 0;
+   //std::chrono::duration<unsigned, std::milli> delai = 500;
+   duration test1 = std::chrono::duration_cast<duration>(std::chrono::milliseconds(1000));
 
    // Méthodes
    void jouerTour();

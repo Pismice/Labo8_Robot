@@ -1,7 +1,3 @@
-//
-// Created by admin on 16.01.2022.
-//
-
 #include "Terrain.h"
 #include <iostream>
 #include <thread>
@@ -10,11 +6,7 @@
 using namespace std;
 
 // TODO : bonne place ?
-const char plafond = '^';
-const char sol = '_';
-const char mur = '|';
-const char vide = ' ';
-const chrono::duration delai = 500ms;
+
 
 Terrain::Terrain(unsigned int h, unsigned int l){
    pointMax.setX(l);
@@ -87,23 +79,12 @@ void Terrain::jouerTour()
        }
 
       // Vérifier si le robot arrive sur la case d'un robot
-      //      remove(robots.begin(), robots.end(), r);
-
-
-      for(Robot& r2 : robots)
-      {
-         if(r == r2)
-         {
-            //robots.remove(r2);
-            // TODO : comment remove r2 de robots
-            break;
-         }
-      }
+      remove(robots.begin(), robots.end(), r);
    }
 
    // Afficher le terrrain (avec surchage <<)
    cout << (*this);
-   this_thread::sleep_for(delai);
+   this_thread::sleep_for(test1);
 }
 
 bool Terrain::siRobotPresentSurLigne(vector<Robot>& robotsSurMaLigne, unsigned noLigne) const
@@ -128,7 +109,7 @@ ostream &operator<<(ostream &lhs, const Terrain &rhs)
    // Affichage du plafond
    for(unsigned x = 0 ; x < rhs.getLargeur() + 2 ; ++x)
    {
-      lhs << plafond;
+      lhs << rhs.plafond;
    }
    lhs << endl;
 
@@ -136,10 +117,10 @@ ostream &operator<<(ostream &lhs, const Terrain &rhs)
    for(unsigned y = 0 ; y < rhs.getHauteur() ; ++y)
    {
       // Affichage du mur gauche
-      lhs << mur;
+      lhs << rhs.mur;
 
       // Affichage de la ligne du milieu
-      string ligne(rhs.getLargeur(), vide);
+      string ligne(rhs.getLargeur(), rhs.vide);
       vector<Robot> robotsSurMaLigne;
       if(rhs.siRobotPresentSurLigne(robotsSurMaLigne, y))
       {
@@ -151,7 +132,7 @@ ostream &operator<<(ostream &lhs, const Terrain &rhs)
       lhs << ligne;
 
       // Affichage du mur droite
-      lhs << mur;
+      lhs << rhs.mur;
 
       lhs << endl;
    }
@@ -159,7 +140,7 @@ ostream &operator<<(ostream &lhs, const Terrain &rhs)
    // Affichage du sol
    for(unsigned x = 0 ; x < rhs.getLargeur() + 2 ; ++x)
    {
-      lhs << sol;
+      lhs << rhs.sol;
    }
    lhs << endl;
 

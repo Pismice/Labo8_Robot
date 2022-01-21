@@ -26,6 +26,13 @@ private:
 public:
    Robot();
 
+   Robot& operator=(const Robot& r)
+   {
+      // TODO  : best practice ?
+      Robot temp = r;
+      return temp;
+   }
+
    Coordonnee getPosition() const
    {
       return this->position;
