@@ -16,11 +16,12 @@ Terrain::Terrain(unsigned int h, unsigned int l){
 
 void Terrain::deploiement(unsigned nbrObjet) {
 
+   robots.resize(nbrObjet);
+
    for(size_t j = 0; j < nbrObjet; ++j)
    {
        bool estUneCaseVierge = false;
        unsigned x, y;
-       robots.reserve(nbrObjet);
 
        while(!estUneCaseVierge)
        {
@@ -39,9 +40,10 @@ void Terrain::deploiement(unsigned nbrObjet) {
                }
            }
        }
-       Robot r;
-       r.setPosition(x,y);
-       robots.emplace_back(r);
+//       Robot r;
+//       r.setPosition(x,y);
+//       robots.push_back(r);
+       robots.at(j).setPosition(x,y);
    }
 }
 
@@ -79,7 +81,15 @@ void Terrain::jouerTour()
        }
 
       // Vérifier si le robot arrive sur la case d'un robot
-      remove(robots.begin(), robots.end(), r);
+      //remove(robots.begin(), robots.end(), r);
+
+      for(auto i = robots.begin(); i != robots.end(); i++)
+      {
+         if(*i == r)
+         {
+            robots.erase(i);
+         }
+      }
    }
 
    // Afficher le terrrain (avec surchage <<)
