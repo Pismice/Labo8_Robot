@@ -13,6 +13,11 @@ Robot::Robot():id(compteur)
    ++compteur;
 }
 
+Robot::~Robot()
+{
+   --compteur;
+}
+
 unsigned Robot::getId() const {
    return id;
 }
@@ -26,14 +31,14 @@ void Robot::deplacer() {
    auto d = short(rand() % nbreDirections-1);
 
    switch (d) {
-      case int(Robot::Direction::HAUT) :
+      case int(Direction::HAUT) :
               //setPosition(position.getX(), position.getY() + 1);
-      case int(Robot::Direction::BAS) :
+      case int(Direction::BAS) :
               setPosition(position.getX(), position.getY() + 1);
          break;
-      case int(Robot::Direction::DROITE) :
+      case int(Direction::DROITE) :
               //setPosition(position.getX() + 1, position.getY());
-      case int(Robot::Direction::GAUCHE) :
+      case int(Direction::GAUCHE) :
               setPosition(position.getX() + 1, position.getY());
          break;
    }
