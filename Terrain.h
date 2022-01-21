@@ -8,7 +8,8 @@ Description     : Interface permettant de gèrer et simuler un terrain en 2D,
                   il peut via un opérateur de flux envoyer son affichage, générer
                   des robots, et gérer une partie de bataille de robots
 
-Remarque(s)     : -
+Remarque(s)     : - Ne gère pas le cas ou le nombre de robots est supérieurs au nombre
+                    de cases
 
 Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------
