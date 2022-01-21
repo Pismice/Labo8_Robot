@@ -27,8 +27,8 @@ class Coordonnee {
 
 public:
    // Constructeur
-   Coordonnee(DataType newX, DataType newY) : x(newX), y(newY){}
    Coordonnee(){}
+   Coordonnee(DataType newX, DataType newY) : x(newX), y(newY){}
 
    // Getters
    DataType getX() const

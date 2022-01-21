@@ -129,21 +129,21 @@ ostream &operator<<(ostream &lhs, const Terrain &rhs)
 {
    system("cls");
 
-   // Affichage du plafond
+   // Affichage du PLAFOND
    for(DataType x = 0 ; x < rhs.pointMax.getX() + 2 ; ++x)
    {
-      lhs << Terrain::plafond;
+      lhs << Terrain::PLAFOND;
    }
    lhs << endl;
 
    // Affichage des lignes du terrain
    for(DataType y = 0 ; y < rhs.pointMax.getY() + 1; ++y)
    {
-      // Affichage du mur gauche
-      lhs << Terrain::mur;
+      // Affichage du MUR gauche
+      lhs << Terrain::MUR;
 
       // Affichage de la ligne du milieu
-      string ligne(size_t(rhs.pointMax.getX()), Terrain::vide);
+      string ligne(size_t(rhs.pointMax.getX()), Terrain::VIDE);
       vector<Robot> robotsSurMaLigne;
       if(rhs.siRobotPresentSurLigne(robotsSurMaLigne, y))
       {
@@ -154,16 +154,16 @@ ostream &operator<<(ostream &lhs, const Terrain &rhs)
       }
       lhs << ligne;
 
-      // Affichage du mur droite
-      lhs << Terrain::mur;
+      // Affichage du MUR droite
+      lhs << Terrain::MUR;
 
       lhs << endl;
    }
 
-   // Affichage du sol
+   // Affichage du SOL
    for(DataType x = 0 ; x < rhs.pointMax.getX() + 2 ; ++x)
    {
-      lhs << Terrain::sol;
+      lhs << Terrain::SOL;
    }
    lhs << endl;
 

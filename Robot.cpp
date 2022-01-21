@@ -15,7 +15,7 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 #include <cstdlib>
 
 unsigned Robot::compteur = 0;
-const unsigned Robot::nbreDirections = 4;
+const unsigned Robot::NBRE_DIRECTIONS = 4;
 
 Robot::Robot():id(compteur)
 {
@@ -29,7 +29,7 @@ Robot::~Robot()
 
 void Robot::deplacer()
 {
-   auto d = short(unsigned(rand()) % nbreDirections);
+   auto d = short(unsigned(rand()) % NBRE_DIRECTIONS);
 
    switch (d) {
       case int(Direction::HAUT) :

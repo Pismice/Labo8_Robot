@@ -29,13 +29,19 @@ typedef std::chrono::duration<unsigned long long> duration;
 
 class Terrain{
    // Fonctions amies
+   /**
+    * Permet de surcharger l'opérateur de flux pour afficher le terrain et ses robots
+    * @param lhs Flux de sortie
+    * @param rhs Terrain à "sortir" (afficher)
+    * @return Flux de sortie
+    */
    friend std::ostream& operator<<(std::ostream& lhs, const Terrain& rhs);
 
    // Constantes statiques
-   const static char plafond = '^';
-   const static char sol = '_';
-   const static char mur = '|';
-   const static char vide = ' ';
+   const static char PLAFOND = '^';
+   const static char SOL = '_';
+   const static char MUR = '|';
+   const static char VIDE = ' ';
 
 private:
    // Propriétés
@@ -49,7 +55,6 @@ private:
    duration delai = std::chrono::duration_cast<duration>(std::chrono::milliseconds (nbreMsDelai));
 
    // Méthodes
-
    /**
     * Permet de jouer un tour sur tous les robots
     */

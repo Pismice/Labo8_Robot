@@ -27,7 +27,7 @@ class Robot{
 
    // Propriétés statiques
    static unsigned compteur;     // Nombre de robots  instanciés
-   const static unsigned nbreDirections; // Nombre de directions possibles
+   const static unsigned NBRE_DIRECTIONS; // Nombre de directions possibles
 
 private:
    // Propriétés privées
