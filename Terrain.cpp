@@ -5,8 +5,6 @@
 
 using namespace std;
 
-// TODO : bonne place ?
-
 
 Terrain::Terrain(unsigned int h, unsigned int l){
    pointMax.setX(l);
@@ -81,8 +79,6 @@ void Terrain::jouerTour()
        }
 
       // Vérifier si le robot arrive sur la case d'un robot
-      //remove(robots.begin(), robots.end(), r);
-
       for(auto i = robots.begin(); i != robots.end(); i++)
       {
          if(*i == r)
@@ -153,15 +149,6 @@ ostream &operator<<(ostream &lhs, const Terrain &rhs)
       lhs << rhs.sol;
    }
    lhs << endl;
-
-   // TODO : supprimer l affichage des coordonnees
-//   for(Robot r : rhs.robots)
-//   {
-//      lhs << "ID = " << r.getId() << endl;
-//      lhs << "x = " << r.getPosition().getX() << endl;
-//      lhs << "y = " << r.getPosition().getY() << endl;
-//      lhs << endl;
-//   }
 
    return lhs;
 }

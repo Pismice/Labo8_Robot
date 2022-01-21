@@ -32,15 +32,17 @@ void Robot::deplacer() {
 
    switch (d) {
       case int(Direction::HAUT) :
-              //setPosition(position.getX(), position.getY() + 1);
-      case int(Direction::BAS) :
               setPosition(position.getX(), position.getY() + 1);
-         break;
+              break;
+      case int(Direction::BAS) :
+              setPosition(position.getX(), position.getY() - 1);
+               break;
       case int(Direction::DROITE) :
-              //setPosition(position.getX() + 1, position.getY());
-      case int(Direction::GAUCHE) :
               setPosition(position.getX() + 1, position.getY());
-         break;
+              break;
+      case int(Direction::GAUCHE) :
+              setPosition(position.getX() -1 , position.getY());
+              break;
    }
    //
 }
