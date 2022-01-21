@@ -23,17 +23,18 @@ class Robot{
    // Fonctions amies
    friend bool operator==(const Robot& lh, const Robot& rh)
    {
-    return (lh.position.getX() == rh.position.getX()) and (lh.position.getY() == rh.position.getY()) and (lh.id != rh.id);
+    return (lh.position.getX() == rh.position.getX())
+            and (lh.position.getY() == rh.position.getY()) and (lh.id != rh.id);
    }
 
    // Propriétés statiques
    static unsigned compteur;
+   const static unsigned nbreDirections; // TODO : MOYEN DE RECUP LA TAILLE DE L ENUM CLASS
 
 private:
    // Propriétés privées
    unsigned id;
    Coordonnee position{};
-   const unsigned nbreDirections = 4; // TODO : MOYEN DE RECUP LA TAILLE DE L ENUM CLASS
    const DataType uniteDeplacement = 1;
 
 public:

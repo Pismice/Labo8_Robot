@@ -15,6 +15,7 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 #include <cstdlib>
 
 unsigned Robot::compteur = 0;
+const unsigned Robot::nbreDirections = 4;
 
 Robot::Robot():id(compteur)
 {
