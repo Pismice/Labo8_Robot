@@ -7,8 +7,8 @@ using namespace std;
 
 
 Terrain::Terrain(unsigned int h, unsigned int l){
-   pointMax.setX(l-1);
-   pointMax.setY(h-1);
+   pointMax.setX(l);
+   pointMax.setY(h);
    pointMin.setX(0);
    pointMin.setX(0);
 }
@@ -57,31 +57,33 @@ void Terrain::demarrerJeu()
    {
       jouerTour();
    }
+   cout << "finitooooo";
+   cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
 void Terrain::jouerTour()
 {
    // Bouger tous les robots
-   for(Robot& r : robots) // TODO : vraiment & ?
+   for(Robot& r : robots)
    {
       r.deplacer();
 
        // Vérifier si dans les cases
        if(r.getPosition().getY() <= pointMin.getY())
        {
-           r.setPosition(r.getPosition().getX(), (pointMin.getY() + 1));
+           r.setPosition(r.getPosition().getX(), (pointMin.getY() + valeurRebondissement));
        }
        if(r.getPosition().getY() >= pointMax.getY())
        {
-           r.setPosition(r.getPosition().getX(), (pointMax.getY() - 1));
+           r.setPosition(r.getPosition().getX(), (pointMax.getY() - valeurRebondissement));
        }
        if(r.getPosition().getX() <= pointMin.getX())
        {
-           r.setPosition(pointMin.getX() + 1, r.getPosition().getY());
+           r.setPosition(pointMin.getX() + valeurRebondissement, r.getPosition().getY());
        }
        if(r.getPosition().getX() >= pointMax.getX())
        {
-           r.setPosition(pointMin.getX() - 1, r.getPosition().getY());
+           r.setPosition(pointMax.getX() - valeurRebondissement, r.getPosition().getY());
        }
 
       // Vérifier si le robot arrive sur la case d'un robot
@@ -96,7 +98,7 @@ void Terrain::jouerTour()
 
    // Afficher le terrrain (avec surchage <<)
    cout << (*this);
-   this_thread::sleep_for(test1);
+   this_thread::sleep_for(delai);
 }
 
 bool Terrain::siRobotPresentSurLigne(vector<Robot>& robotsSurMaLigne, unsigned noLigne) const
@@ -119,7 +121,7 @@ ostream &operator<<(ostream &lhs, const Terrain &rhs)
    system("cls");
 
    // Affichage du plafond
-   for(unsigned x = 0 ; x < rhs.pointMax.getX() + 3 ; ++x)
+   for(unsigned x = 0 ; x < rhs.pointMax.getX() + 2 ; ++x)
    {
       lhs << rhs.plafond;
    }
@@ -132,7 +134,7 @@ ostream &operator<<(ostream &lhs, const Terrain &rhs)
       lhs << rhs.mur;
 
       // Affichage de la ligne du milieu
-      string ligne(rhs.pointMax.getX() + 1, rhs.vide);
+      string ligne(rhs.pointMax.getX(), rhs.vide);
       vector<Robot> robotsSurMaLigne;
       if(rhs.siRobotPresentSurLigne(robotsSurMaLigne, y))
       {
@@ -150,7 +152,7 @@ ostream &operator<<(ostream &lhs, const Terrain &rhs)
    }
 
    // Affichage du sol
-   for(unsigned x = 0 ; x < rhs.pointMax.getX() + 3 ; ++x)
+   for(unsigned x = 0 ; x < rhs.pointMax.getX() + 2 ; ++x)
    {
       lhs << rhs.sol;
    }

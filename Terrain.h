@@ -28,9 +28,10 @@ private:
    // Propriétés
    Coordonnee pointMax;
    Coordonnee pointMin;
+   unsigned valeurRebondissement = 6;
 
    //std::chrono::duration<unsigned, std::milli> delai = 500;
-   duration test1 = std::chrono::duration_cast<duration>(std::chrono::milliseconds(1000));
+   duration delai = std::chrono::duration_cast<duration>(std::chrono::seconds (1));
 
    // Méthodes
    void jouerTour();
