@@ -39,13 +39,14 @@ class Terrain{
 
 private:
    // Propriétés
-   Coordonnee pointMax{};
-   Coordonnee pointMin{};
-   DataType valeurRebondissement = 2;
+   const Coordonnee pointMax{};
+   const Coordonnee pointMin{};
+   const DataType valeurRebondissement = 2;
+   const unsigned nbreSecondesDelai = 1;
+
    std::vector<Robot> robots;
 
-   //std::chrono::duration<unsigned, std::milli> delai = 500;
-   duration delai = std::chrono::duration_cast<duration>(std::chrono::seconds (1));
+   duration delai = std::chrono::duration_cast<duration>(std::chrono::seconds (nbreSecondesDelai));
 
    // Méthodes
    void jouerTour();
