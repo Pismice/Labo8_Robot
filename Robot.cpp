@@ -30,14 +30,14 @@ unsigned Robot::getCompteur() {
 }
 
 void Robot::deplacer() {
-   auto d = short(rand() % nbreDirections-1);
+   short d = short(rand() % nbreDirections);
 
    switch (d) {
       case int(Direction::HAUT) :
-              setPosition(position.getX(), position.getY() + 1);
+              setPosition(position.getX(), position.getY() - 1);
               break;
       case int(Direction::BAS) :
-              setPosition(position.getX(), position.getY() - 1);
+              setPosition(position.getX(), position.getY() + 1);
                break;
       case int(Direction::DROITE) :
               setPosition(position.getX() + 1, position.getY());

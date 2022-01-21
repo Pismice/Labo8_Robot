@@ -28,7 +28,7 @@ private:
    // Propriétés
    Coordonnee pointMax;
    Coordonnee pointMin;
-   unsigned valeurRebondissement = 6;
+   unsigned valeurRebondissement = 1;
 
    //std::chrono::duration<unsigned, std::milli> delai = 500;
    duration delai = std::chrono::duration_cast<duration>(std::chrono::seconds (1));

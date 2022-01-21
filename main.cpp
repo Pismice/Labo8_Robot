@@ -35,7 +35,7 @@ int main() {
    unsigned const NBRE_OBJETS = saisieDansIntervalle(NBRE_OJBETS_MIN , NBRE_OJBETS_MAX, "nbre objets"s);
 
    // TODO : BON ENDROIT ?
-   srand((unsigned int)time(0));
+   srand((unsigned int)time(nullptr));
 
    // Création du terrain
    Terrain t(HAUTEUR, LARGEUR);

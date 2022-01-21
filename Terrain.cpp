@@ -5,7 +5,6 @@
 
 using namespace std;
 
-
 Terrain::Terrain(unsigned int h, unsigned int l){
    pointMax.setX(l);
    pointMax.setY(h);
@@ -66,7 +65,7 @@ void Terrain::jouerTour()
    // Bouger tous les robots
    for(Robot& r : robots)
    {
-      r.deplacer();
+       r.deplacer();
 
        // Vérifier si dans les cases
        if(r.getPosition().getY() <= pointMin.getY())
