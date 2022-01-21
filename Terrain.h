@@ -41,7 +41,7 @@ private:
    // Propriétés
    Coordonnee pointMax{};
    Coordonnee pointMin{};
-   DataType valeurRebondissement = 1;
+   DataType valeurRebondissement = 2;
    std::vector<Robot> robots;
 
    //std::chrono::duration<unsigned, std::milli> delai = 500;

@@ -29,7 +29,6 @@ Terrain::Terrain(DataType h, DataType l){
    pointMin.setX(0);
 }
 
-
 void Terrain::deploiement(unsigned nbrObjet) {
 
    robots.resize(nbrObjet);
