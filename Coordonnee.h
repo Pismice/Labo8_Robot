@@ -1,17 +1,26 @@
-//
-// Created by pismice on 20.01.2022.
-//
+/*
+-----------------------------------------------------------------------------------
+Nom du fichier  : Coordonnee.h
+Auteur(s)       : Jérémie Santoro, Didier Lokokpe
+Date creation   : 21.01.2022
+
+Description     : Cette interface accompagnée de ses définitions, permet de gèrer
+                  de manière centralisée la représentation dans l'espace
+Remarque(s)     : -
+
+Compilateur     : Mingw-w64 g++ 11.2.0
+-----------------------------------------------------------------------------------
+*/
 
 #ifndef LABO8_ROBOT_COORDONNEE_H
 #define LABO8_ROBOT_COORDONNEE_H
 
-using DataType = unsigned;
+using DataType = int;
 
 class Coordonnee {
    // Propriétés
    DataType x;
    DataType y;
-
 
 
 public:
@@ -26,13 +35,13 @@ public:
    }
 
    // Setters
-   void setX(DataType x)
+   void setX(DataType newX)
    {
-      this->x = x;
+      this->x = newX;
    }
-   void setY(DataType y)
+   void setY(DataType newY)
    {
-      this->y = y;
+      this->y = newY;
    }
 
 
