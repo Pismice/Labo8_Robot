@@ -42,10 +42,10 @@ private:
    Coordonnee pointMax{};
    Coordonnee pointMin{};
    DataType valeurRebondissement = 2;
-   unsigned nbreSecondesDelai = 1;
    std::vector<Robot> robots;
 
-   duration delai = std::chrono::duration_cast<duration>(std::chrono::seconds (nbreSecondesDelai));
+   //std::chrono::duration<unsigned, std::milli> delai = 500;
+   duration delai = std::chrono::duration_cast<duration>(std::chrono::seconds (1));
 
    // Méthodes
    void jouerTour();

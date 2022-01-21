@@ -22,20 +22,14 @@ Robot::Robot():id(compteur)
    ++compteur;
 }
 
-/*Robot::~Robot()
+Robot::~Robot()
 {
    --compteur;
-}*/
+}
 
 void Robot::deplacer()
 {
    auto d = short(unsigned(rand()) % nbreDirections);
-
-void Robot::deplacer() {
-
-    srand((unsigned int)time(0));
-
-    int d = int(rand() % nbreDirections);
 
    switch (d) {
       case int(Direction::HAUT) :

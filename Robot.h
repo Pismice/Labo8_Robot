@@ -16,7 +16,7 @@ Compilateur     : Mingw-w64 g++ 11.2.0
 #define LABO8_ROBOT_ROBOT_H
 #include "Coordonnee.h"
 
-enum class Direction {HAUT = 1, BAS, DROITE, GAUCHE};
+enum class Direction {HAUT, BAS, DROITE, GAUCHE};
 
 class Robot{
 
@@ -39,7 +39,7 @@ private:
 
 public:
    Robot();
-   //~Robot();
+   ~Robot();
 
    Robot& operator=(const Robot& r)
    {
