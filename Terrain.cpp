@@ -83,22 +83,22 @@ void Terrain::jouerTour()
        r.deplacer();
 
        // Vérifier si dans les limites du terrain
-//       if(r.getPosition().getY() <= pointMin.getY())
-//       {
-//           r.setPosition(r.getPosition().getX(), (pointMin.getY() + valeurRebondissement));
-//       }
-//       if(r.getPosition().getY() >= pointMax.getY())
-//       {
-//           r.setPosition(r.getPosition().getX(), (pointMax.getY() - valeurRebondissement));
-//       }
-//       if(r.getPosition().getX() <= pointMin.getX())
-//       {
-//           r.setPosition(pointMin.getX() + valeurRebondissement, r.getPosition().getY());
-//       }
-//       if(r.getPosition().getX() >= pointMax.getX())
-//       {
-//           r.setPosition(pointMax.getX() - valeurRebondissement, r.getPosition().getY());
-//       }
+       if(r.getPosition().getY() <= pointMin.getY())
+       {
+           r.setPosition(r.getPosition().getX(), (pointMin.getY() + valeurRebondissement));
+       }
+       if(r.getPosition().getY() >= pointMax.getY())
+       {
+           r.setPosition(r.getPosition().getX(), (pointMax.getY() - valeurRebondissement));
+       }
+       if(r.getPosition().getX() <= pointMin.getX())
+       {
+           r.setPosition(pointMin.getX() + valeurRebondissement, r.getPosition().getY());
+       }
+       if(r.getPosition().getX() >= pointMax.getX())
+       {
+           r.setPosition(pointMax.getX() - valeurRebondissement, r.getPosition().getY());
+       }
 
       // Vérifier si le robot arrive sur la case d'un robot
       for(auto i = robots.begin(); i != robots.end(); i++)
