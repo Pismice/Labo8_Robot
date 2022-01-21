@@ -8,6 +8,8 @@ Description     : Ce programme permet d'utiliser la classe Terrain
                   qui permet de créer un jeu de simulation de batailles de robots
 
 Remarque(s)     : - Une fois le jeu terminé, l'utilisateur peut quitter le programme
+                  - Ne gère pas le cas ou le nombre de robots est supérieurs au nombre
+                    de cases
 
 Compilateur     : Mingw-w64 g++ 11.2.0
 -----------------------------------------------------------------------------------

@@ -31,7 +31,7 @@ class Robot{
 
 private:
    // Propriétés privées
-   const unsigned id;
+   unsigned id;
    Coordonnee position{};
    const unsigned nbreDirections = 4; // TODO : MOYEN DE RECUP LA TAILLE DE L ENUM CLASS
    const DataType uniteDeplacement = 1;
@@ -42,7 +42,9 @@ public:
 
    Robot& operator=(const Robot& r)
    {
-      return *this; // TODO ?????
+      id = r.id;
+      position = r.position;
+      return *this;
    }
 
    Coordonnee getPosition() const
